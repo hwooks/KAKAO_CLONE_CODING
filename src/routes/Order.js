@@ -5,7 +5,6 @@ import CheckedContents from "../components/CheckedContents.js";
 
 // data
 import members from "../data/members.js";
-import items from "../data/carts.js";
 
 import "../styles/order.css";
 import Form from "react-bootstrap/Form";
@@ -15,7 +14,7 @@ import Button from "react-bootstrap/Button";
 import { instance, getCartList } from "../api";
 
 function Order({ route }) {
-  const [orderItems, setOrderItems] = useState(items);
+  const [orderItems, setOrderItems] = useState([]);
   const [memberInfo] = useState(members);
   const [agree, setAgree] = useState();
   const [totalPrice, setTotalPrice] = useState(0);
@@ -52,8 +51,8 @@ function Order({ route }) {
 
   const handleOnClick = async () => {
     if (agree) {
-      await instance.post("/orders/save").then((response) => {
-        navigate("/result", { state: { orderId: response.data.id } });
+      await instance.post("/orders/save").then((res) => {
+        navigate(`/result/${res.data.response.id}`);
       });
     } else {
       alert("결제 조건 전체 동의가 필요합니다.");

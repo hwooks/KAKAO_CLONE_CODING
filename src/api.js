@@ -34,7 +34,7 @@ const getCartList = async () => {
 };
 
 const getOrderList = async (props) => {
-  return await instance.get(`/order/${props}`);
+  return await instance.get(`/orders/${props}`);
 };
 
 const deleteCart = async () => {
