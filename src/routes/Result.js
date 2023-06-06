@@ -5,8 +5,6 @@ import '../styles/result.css';
 
 import { getOrderList, deleteCart } from '../api'
 
-import axios from 'axios';
-
 function Result() {
 
     let [orderItems, setOrderItems] = useState();

@@ -64,22 +64,19 @@ export class AddCardDto {
 }
 
 export class ProductDto {
-  constructor({ id, productName, price, description, image }) {
+  constructor({ id, productName, price, description, image, options = [] }) {
     this.id = id;
     this.productName = productName;
     this.price = price;
     this.description = description;
     this.image = image;
+    this.options = options;
   }
 }
 
 export class CartDto {
-  constructor({ id, productName, carts, totalPrice }) {
-    this.products = {
-      id,
-      carts,
-      productName,
-    };
+  constructor({ products = [], totalPrice }) {
+    this.products = products;
     this.totalPrice = totalPrice;
   }
 }
@@ -92,7 +89,7 @@ export class CartResDto extends ResDto {
 
 export class EditCartReqDto {
   constructor({ carts }) {
-    const notApprovedItems = items.filters(
+    const notApprovedItems = carts.filters(
       (item) => !item.cartId || !item.quantity
     );
 

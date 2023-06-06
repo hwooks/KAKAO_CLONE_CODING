@@ -1,72 +1,52 @@
-import axios from 'axios';
+import axios from "axios";
+
+export const instance = axios.create({
+  baseURL:
+    "http://kakao-app-env.eba-ggmpdnhz.ap-northeast-2.elasticbeanstalk.com/",
+  timeout: 1000,
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: localStorage.getItem("token"),
+  },
+});
 
 /**
     전체 상품 조회
 **/
 const getProducts = async (props) => {
-    return await axios.get(`/products/?page=${props}`);
-}
+  return await instance.get(`/products/?page=${props}`);
+};
 
 const getProductDetails = async (props) => {
-    return await axios.get(`/products/${props}`, {
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: localStorage.getItem("token"),
-        },
-    })
-}
+  return await instance.get(`/products/${props}`);
+};
 
 const getOptions = async (props) => {
-    return await axios.get(`/products/${props}/option`, {
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: localStorage.getItem("token"),
-        },
-    })
-}
+  return await instance.get(`/products/${props}/option`);
+};
 
 const getOptionName = async (props) => {
-    return await axios.get(`/options/${props}/name`, {
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: localStorage.getItem("token"),
-        },
-    })
-}
+  return await instance.get(`/options/${props}/name`);
+};
 
-const getCartList = async (props) => {
-    return await axios.get('/cart', {
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: localStorage.getItem("token"),
-        },
-    })
-}
+const getCartList = async () => {
+  return await instance.get("/carts");
+};
 
 const getOrderList = async (props) => {
-    return await axios.get(`/order/${props}`, {
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: localStorage.getItem("token"),
-        },
-    });
-}
+  return await instance.get(`/order/${props}`);
+};
 
 const deleteCart = async () => {
-    return await axios.delete('/cart/clear', {
-        headers: {
-             "Content-Type": "application/json",
-             Authorization: localStorage.getItem("token"),
-        }
-    })
-}
+  return await instance.delete("/cart/clear");
+};
 
 export {
-    getProducts,
-    getProductDetails,
-    getOptions,
-    getCartList,
-    getOrderList,
-    getOptionName,
-    deleteCart
-}
+  getProducts,
+  getProductDetails,
+  getOptions,
+  getCartList,
+  getOrderList,
+  getOptionName,
+  deleteCart,
+};
