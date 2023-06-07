@@ -11,7 +11,7 @@ import { instance } from "../api";
 
 function CartList({ items, getCartItems }) {
   const navigate = useNavigate();
-  let [cartItems, setCartItems] = useState(items);
+  const [cartItems, setCartItems] = useState(items);
 
   useEffect(() => {
     if (cartItems.length === 0) {

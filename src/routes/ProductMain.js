@@ -13,8 +13,8 @@ import "../styles/Card.css";
 import { ProductDto } from "../dto";
 
 function ProductMain() {
-  let [products, setProducts] = useState([]);
-  let [page, setPage] = useState(0);
+  const [products, setProducts] = useState([]);
+  const [page, setPage] = useState(0);
 
   const bottomObserver = useRef(null);
 

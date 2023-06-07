@@ -25,7 +25,6 @@ function Detail() {
   let [products, setProducts] = useState();
 
   const navigate = useNavigate();
-  const [isCartListItem, setIsCartListItem] = useState(false);
 
   useEffect(() => {
     // product DB 읽어 오기

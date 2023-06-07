@@ -12,7 +12,7 @@ import { getCartList } from "../api";
 function Cart() {
   const navigate = useNavigate();
 
-  let [cartItems, setCartItems] = useState();
+  const [cartItems, setCartItems] = useState();
 
   useEffect(() => {
     if (localStorage.getItem("token") === null) {

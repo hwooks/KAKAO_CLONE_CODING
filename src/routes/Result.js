@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 
 import "../styles/result.css";
 
-import { getOrderList, deleteCart } from "../api";
+import { getOrderList } from "../api";
 
 function Result() {
   let [orderItems, setOrderItems] = useState();
@@ -18,10 +18,6 @@ function Result() {
       setOrderItems(() => order);
       setTotalPrice(res.data.response.totalPrice);
     });
-
-    return () => {
-      deleteCart().then((res) => {});
-    };
   }, []);
 
   /* * * * * * * * */

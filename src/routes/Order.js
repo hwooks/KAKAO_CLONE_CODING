@@ -25,7 +25,6 @@ function Order({ route }) {
 
   useEffect(() => {
     getCartList().then((res) => {
-      console.log(res.data.response);
       setOrderItems(res.data.response.products);
       setTotalPrice(res.data.response.totalPrice);
     });
