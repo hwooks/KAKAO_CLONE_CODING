@@ -1,8 +1,7 @@
 import axios from "axios";
 
 export const instance = axios.create({
-  baseURL:
-    "http://kakao-app-env.eba-ggmpdnhz.ap-northeast-2.elasticbeanstalk.com/",
+  baseURL: "http://localhost:8080/", // "http://kakao-app-env.eba-ggmpdnhz.ap-northeast-2.elasticbeanstalk.com/",
   timeout: 1000,
   headers: {
     "Content-Type": "application/json",
