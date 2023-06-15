@@ -13,7 +13,7 @@ export const instance = axios.create({
     전체 상품 조회
 **/
 const getProducts = async (props) => {
-  return await instance.get(`/products/?page=${props}`);
+  return await instance.get(`/products?page=${props}`);
 };
 
 const getProductDetails = async (props) => {
