@@ -33,6 +33,7 @@ function Login({ onSubmit }) {
 
       instance.post("/login", body).then((r) => {
         const res = new ResDto(r.data);
+        console.log(res);
         const { error } = res;
 
         if (error !== null) {

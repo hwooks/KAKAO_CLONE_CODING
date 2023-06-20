@@ -1,13 +1,32 @@
 import axios from "axios";
 
-export const instance = axios.create({
-  baseURL: "http://localhost:8080/", // "http://kakao-app-env.eba-ggmpdnhz.ap-northeast-2.elasticbeanstalk.com/",
+const instance = axios.create({
+  baseURL:
+    "http://kakao-app-env.eba-kfsgeb74.ap-northeast-2.elasticbeanstalk.com/", // "http://localhost:8080/",
   timeout: 1000,
   headers: {
     "Content-Type": "application/json",
     Authorization: localStorage.getItem("token"),
   },
 });
+
+instance.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    switch (error.response.status) {
+      case 401:
+        alert("로그인이 필요합니다.");
+        window.location.href = "/login";
+        break;
+      case 400:
+        return Promise.resolve(error.response);
+    }
+  }
+);
+
+export { instance };
 
 /**
     전체 상품 조회

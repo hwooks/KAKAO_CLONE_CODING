@@ -43,7 +43,6 @@ function CartList({ items, getCartItems }) {
       return {
         ...item,
         carts: item.carts.map((cart) => {
-          console.log(cart.option.id, optionId);
           if (cart.option.id !== optionId) return cart;
           return {
             ...cart,
@@ -52,17 +51,22 @@ function CartList({ items, getCartItems }) {
         }),
       };
     });
-    console.log(addItem);
     setCartItems(addItem);
     getCartItems(addItem);
   };
 
   const handleDecrease = (productIndex, optionId) => {
-    const subtractItem = cartItems[productIndex].carts.map((cart) => {
-      if (cart.option.id !== optionId) return cart;
+    const subtractItem = cartItems.map((item, index) => {
+      if (index !== productIndex) return item;
       return {
-        ...cart,
-        quantity: cart.quantity - 1,
+        ...item,
+        carts: item.carts.map((cart) => {
+          if (cart.option.id !== optionId) return cart;
+          return {
+            ...cart,
+            quantity: cart.quantity - 1,
+          };
+        }),
       };
     });
     setCartItems(subtractItem);

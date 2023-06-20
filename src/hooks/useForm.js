@@ -17,6 +17,10 @@ const useForm = ({
 
     if (setEmailCheck && name == "email") setEmailCheck(false);
   };
+  
+  const handleCheck = async (e) => {
+    await onClick();
+  };
 
   const handleSubmit = async (e) => {
     setIsLoading(true);
@@ -34,6 +38,7 @@ const useForm = ({
     values,
     errors,
     isLoading,
+    handleCheck,
     handleChange,
     handleSubmit,
   };
