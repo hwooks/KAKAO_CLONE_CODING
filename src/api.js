@@ -6,15 +6,25 @@ const instance = axios.create({
   timeout: 1000,
   headers: {
     "Content-Type": "application/json",
-    Authorization: localStorage.getItem("token"),
   },
 });
+
+instance.interceptors.request.use(
+  (config) => {
+    config.headers.Authorization = localStorage.getItem("token");
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 instance.interceptors.response.use(
   (response) => {
     return response;
   },
   (error) => {
+    console.log(error.response);
     switch (error.response.status) {
       case 401:
         alert("로그인이 필요합니다.");

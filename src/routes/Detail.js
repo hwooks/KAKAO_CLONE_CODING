@@ -101,7 +101,6 @@ function Detail() {
   });
 
   const totalPrice = priceForSelected.reduce((a, b) => a + b, 0);
-  /* * * * * * */
 
   const addCartList = async () => {
     console.log("add");
@@ -122,13 +121,13 @@ function Detail() {
     alert("장바구니에 담겼습니다.");
   };
 
-  const checkCartList = async () => {
-    await getCartList()
+  const checkCartList = () => {
+    getCartList()
       .then((res) => {
         if (res.data.response !== null) {
           const cartList = new CartDto(res.data.response);
           const { products } = cartList;
-          console.log(products);
+
           const filterCartList = (query) => {
             return products.filter((el) => el.optionId == query);
           };
@@ -147,12 +146,10 @@ function Detail() {
         }
       })
       .catch((err) => {
-        console.log(err);
         if (err.response.status === 401) {
           console.log("expired token");
           alert("로그인이 필요한 서비스입니다. 다시 로그인해주세요.");
           localStorage.removeItem("token");
-
           navigate("/login");
         }
       });
