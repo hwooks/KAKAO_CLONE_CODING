@@ -22,6 +22,8 @@ import NotFound from './routes/NotFound'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import { staticServerUri } from "./config";
+
 function App() {
 
   return (
@@ -29,15 +31,15 @@ function App() {
         <BrowserRouter>
             <Routes>
                 {/* 단독 레이아웃 */}
-                <Route path="/login" element={<Login />}></Route>
-                <Route path="/signup" element={<SignUp />}></Route>
+                <Route path={staticServerUri + "/login"} element={<Login />}></Route>
+                <Route path={staticServerUri + "/signup"} element={<SignUp />}></Route>
                 {/* Header, Footer 레이아웃 */}
                 <Route element={<MainLayout />}>
-                    <Route path="/" element={<Main />}></Route>
-                    <Route path="/product/:productId" element={<Detail />}></Route>
-                    <Route path="/cart" element={<Cart />}></Route>
-                    <Route path="/order" element={<Order />}></Route>
-                    <Route path="/result/:orderId" element={<Result />}></Route>
+                    <Route path={staticServerUri + "/"} element={<Main />}></Route>
+                    <Route path={staticServerUri + "/product/:productId"} element={<Detail />}></Route>
+                    <Route path={staticServerUri + "/cart"} element={<Cart />}></Route>
+                    <Route path={staticServerUri + "/order"} element={<Order />}></Route>
+                    <Route path={staticServerUri + "/result/:orderId"} element={<Result />}></Route>
                     {/* 위 라우트 경로 중 일치하는 라우트가 없다면 아래 라우트 출력 */}
                     <Route path="*" element={<NotFound />}></Route>
                 </Route>

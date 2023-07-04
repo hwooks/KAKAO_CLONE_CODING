@@ -8,6 +8,7 @@ import "../styles/cart.css";
 
 // data
 import { getCartList } from "../api";
+import { staticServerUri } from "../config";
 
 function Cart() {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ function Cart() {
   useEffect(() => {
     if (localStorage.getItem("token") === null) {
       alert("로그인이 필요한 서비스입니다.");
-      navigate("/login");
+      navigate(staticServerUri + "/login");
     } else {
       getCartList()
         .then((res) => {
@@ -30,7 +31,7 @@ function Cart() {
             console.log("expired token");
             alert("로그인이 만료되었습니다. 다시 로그인해주세요.");
             localStorage.removeItem("token");
-            navigate("/login");
+            navigate(staticServerUri + "/login");
           }
         });
     }

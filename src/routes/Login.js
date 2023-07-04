@@ -11,6 +11,7 @@ import "../styles/form.css";
 
 import { instance } from "../api";
 import { LoginDto, ResDto } from "../dto";
+import { staticServerUri } from "../config";
 
 function Login({ onSubmit }) {
   const navigate = useNavigate();
@@ -43,7 +44,7 @@ function Login({ onSubmit }) {
 
         localStorage.setItem("token", r.headers.authorization);
         alert("로그인 되었습니다.");
-        navigate("/");
+        navigate(staticServerUri + "/");
       });
     },
     validate: ({ email, password }) => {
@@ -66,10 +67,10 @@ function Login({ onSubmit }) {
   return (
     <div className="outBox">
       <div>
-        <Link to="/">
+        <Link to={staticServerUri + "/"}>
           <img
             className="logoText"
-            src={"logoKakaoText.png"}
+            src={staticServerUri + "/logoKakaoText.png"}
             width={120}
             alt="logoKakaoText.png"
           />
@@ -110,7 +111,7 @@ function Login({ onSubmit }) {
           </Form>
 
           <Link
-            to="/signup"
+            to={staticServerUri + "/signup"}
             className="login-signup"
             style={{ textDecoration: "none" }}
           >

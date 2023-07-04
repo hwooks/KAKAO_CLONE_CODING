@@ -1,8 +1,9 @@
 import axios from "axios";
+import { staticServerUri } from "./config";
 
 const instance = axios.create({
   baseURL:
-    "./api", // "http://localhost:8080/",
+    staticServerUri + "/api", // "http://localhost:8080/",
   timeout: 1000,
   headers: {
     "Content-Type": "application/json",

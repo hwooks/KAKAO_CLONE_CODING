@@ -11,6 +11,7 @@ import Button from "react-bootstrap/Button";
 import "../styles/form.css";
 
 import { instance } from "../api";
+import { staticServerUri } from "../config";
 
 function SignUpForm({ onSubmit, onClick }) {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ function SignUpForm({ onSubmit, onClick }) {
         instance.post("/join", body).then((res) => {
           if (res.data.success) {
             alert("회원가입이 완료되었습니다.");
-            navigate("/login");
+            navigate(staticServerUri + "/login");
           } else {
             alert(res.data.error.message);
           }
