@@ -29,15 +29,15 @@ function App() {
         <BrowserRouter>
             <Routes>
                 {/* 단독 레이아웃 */}
-                <Route path="/ka6cdbd7cc369a/login" element={<Login />}></Route>
-                <Route path="/ka6cdbd7cc369a/signup" element={<SignUp />}></Route>
+                <Route path="/login" element={<Login />}></Route>
+                <Route path="/signup" element={<SignUp />}></Route>
                 {/* Header, Footer 레이아웃 */}
                 <Route element={<MainLayout />}>
-                    <Route path="/ka6cdbd7cc369a" element={<Main />}></Route>
-                    <Route path="/ka6cdbd7cc369a/product/:productId" element={<Detail />}></Route>
-                    <Route path="/ka6cdbd7cc369a/cart" element={<Cart />}></Route>
-                    <Route path="/ka6cdbd7cc369a/order" element={<Order />}></Route>
-                    <Route path="/ka6cdbd7cc369a/result/:orderId" element={<Result />}></Route>
+                    <Route path="/" element={<Main />}></Route>
+                    <Route path="/product/:productId" element={<Detail />}></Route>
+                    <Route path="/cart" element={<Cart />}></Route>
+                    <Route path="/order" element={<Order />}></Route>
+                    <Route path="/result/:orderId" element={<Result />}></Route>
                     {/* 위 라우트 경로 중 일치하는 라우트가 없다면 아래 라우트 출력 */}
                     <Route path="*" element={<NotFound />}></Route>
                 </Route>
