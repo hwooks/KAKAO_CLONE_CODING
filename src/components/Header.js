@@ -21,13 +21,13 @@ function Header() {
     <header className="header">
       <div className="contents">
         <Link to="/">
-          <img src={"/logoKakao.png"} alt="logoKakao.png" height={30} />
+          <img src={"./logoKakao.png"} alt="logoKakao.png" height={30} />
         </Link>
         <nav>
           <div className="navigation">
             <span>
               <Link to="/cart">
-                <img src={"/cart.png"} alt="cart.png" height={30} />
+                <img src={"./cart.png"} alt="cart.png" height={30} />
               </Link>
             </span>
             <span>|</span>
