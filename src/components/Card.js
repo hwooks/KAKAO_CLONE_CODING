@@ -11,7 +11,7 @@ function Card(props) {
   return (
     <Col>
       <Link
-        to={"/product/" + props.product.id}
+        to={"./product/" + props.product.id}
         style={{ textDecoration: "none" }}
       >
         <div className="card-img">

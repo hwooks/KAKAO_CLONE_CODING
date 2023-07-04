@@ -11,21 +11,21 @@ function Main() {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src={"carouselItem1.jpeg"}
+            src={"./carouselItem1.jpeg"}
             alt="carouselItem1.jpeg"
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src={"carouselItem2.jpeg"}
+            src={"./carouselItem2.jpeg"}
             alt="carouselItem2.jpeg"
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src={"carouselItem3.jpeg"}
+            src={"./carouselItem3.jpeg"}
             alt="carouselItem3.jpeg"
           />
         </Carousel.Item>

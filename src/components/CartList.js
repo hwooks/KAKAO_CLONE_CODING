@@ -16,7 +16,7 @@ function CartList({ items, getCartItems }) {
   useEffect(() => {
     if (cartItems.length === 0) {
       alert("장바구니에 담긴 상품이 없습니다.");
-      navigate("/");
+      navigate("./");
     }
     console.log(cartItems);
   }, [cartItems.length, navigate]);
@@ -33,7 +33,7 @@ function CartList({ items, getCartItems }) {
       console.log(response.data);
     });
 
-    navigate("/order");
+    navigate("./order");
   };
 
   /* Counter 에 있던 함수 */

@@ -20,13 +20,13 @@ function Header() {
   return (
     <header className="header">
       <div className="contents">
-        <Link to="/">
+        <Link to="./">
           <img src={"./logoKakao.png"} alt="logoKakao.png" height={30} />
         </Link>
         <nav>
           <div className="navigation">
             <span>
-              <Link to="/cart">
+              <Link to="./cart">
                 <img src={"./cart.png"} alt="cart.png" height={30} />
               </Link>
             </span>
@@ -34,7 +34,7 @@ function Header() {
             <span>
               {isLogin ? (
                 <Link
-                  to="/login"
+                  to="./login"
                   onClick={handleLogout}
                   style={{ textDecoration: "none", color: "black" }}
                 >
@@ -43,7 +43,7 @@ function Header() {
                 </Link>
               ) : (
                 <Link
-                  to="/login"
+                  to="./login"
                   style={{ textDecoration: "none", color: "black" }}
                 >
                   {" "}
