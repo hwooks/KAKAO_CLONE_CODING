@@ -11,7 +11,7 @@ import Button from "react-bootstrap/Button";
 import "../styles/form.css";
 
 import { instance } from "../api";
-import { staticServerUri } from "../config";
+const staticServerUri = process.env.REACT_APP_PATH;
 
 function SignUpForm({ onSubmit, onClick }) {
   const navigate = useNavigate();
@@ -88,10 +88,10 @@ function SignUpForm({ onSubmit, onClick }) {
   return (
     <div className="outBox">
       <div>
-        <Link to="/">
+        <Link to={staticServerUri + "/"}>
           <img
             className="logoText"
-            src={"logoKakaoText.png"}
+            src={staticServerUri + "logoKakaoText.png"}
             alt="logoKakaoText.png"
             width={120}
           />

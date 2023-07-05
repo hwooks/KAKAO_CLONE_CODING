@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 
 import "../styles/Header.css";
 
+const staticServerUri = process.env.REACT_APP_PATH;
+
 function Header() {
   const [isLogin, setIsLogin] = useState(false);
 
@@ -20,21 +22,21 @@ function Header() {
   return (
     <header className="header">
       <div className="contents">
-        <Link to="./">
-          <img src={"./logoKakao.png"} alt="logoKakao.png" height={30} />
+        <Link to={staticServerUri + "/"}>
+          <img src={staticServerUri + "/logoKakao.png"} alt="logoKakao.png" height={30} />
         </Link>
         <nav>
           <div className="navigation">
             <span>
-              <Link to="./cart">
-                <img src={"./cart.png"} alt="cart.png" height={30} />
+              <Link to={staticServerUri + "/cart"}>
+                <img src={staticServerUri + "/cart.png"} alt="cart.png" height={30} />
               </Link>
             </span>
             <span>|</span>
             <span>
               {isLogin ? (
                 <Link
-                  to="./login"
+                  to={staticServerUri + "/login"}
                   onClick={handleLogout}
                   style={{ textDecoration: "none", color: "black" }}
                 >
@@ -43,7 +45,7 @@ function Header() {
                 </Link>
               ) : (
                 <Link
-                  to="./login"
+                  to={staticServerUri + "/login"}
                   style={{ textDecoration: "none", color: "black" }}
                 >
                   {" "}

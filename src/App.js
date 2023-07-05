@@ -22,7 +22,7 @@ import NotFound from './routes/NotFound'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { staticServerUri } from "./config";
+const staticServerUri = process.env.REACT_APP_PATH;
 
 function App() {
 

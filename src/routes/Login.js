@@ -11,7 +11,8 @@ import "../styles/form.css";
 
 import { instance } from "../api";
 import { LoginDto, ResDto } from "../dto";
-import { staticServerUri } from "../config";
+
+const staticServerUri = process.env.REACT_APP_PATH;
 
 function Login({ onSubmit }) {
   const navigate = useNavigate();

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getProductDetails, getCartList } from "../api";
-import { staticServerUri } from "../config";
 
 // components
 import Counter from "../components/Counter.js";
@@ -19,6 +18,8 @@ import "../styles/Detail.css";
 
 import { instance } from "../api";
 import { CartDto, ProductDto } from "../dto";
+
+const staticServerUri = process.env.REACT_APP_PATH;
 
 function Detail() {
   const { productId } = useParams();
@@ -264,7 +265,7 @@ function Detail() {
                 }}
                 onClick={handleOnClick}
               >
-                <img src={"/cart_white.png"} style={{ height: 35 }} />
+                <img src={staticServerUri + "/cart_white.png"} style={{ height: 35 }} />
               </Button>
               <Button
                 id="detail-btn-buy"

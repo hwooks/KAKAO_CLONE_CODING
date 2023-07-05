@@ -1,5 +1,5 @@
 import axios from "axios";
-import { staticServerUri } from "./config";
+const staticServerUri = process.env.REACT_APP_PATH;
 
 const instance = axios.create({
   baseURL:

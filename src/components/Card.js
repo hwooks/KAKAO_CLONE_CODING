@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
 import "../styles/Card.css";
 
-import { staticServerUri } from "../config";
-
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Badge from "react-bootstrap/Badge";
+
+const staticServerUri = process.env.REACT_APP_PATH;
 
 function Card(props) {
   return (
     <Col>
       <Link
-        to={"./product/" + props.product.id}
+        to={staticServerUri + "/product/" + props.product.id}
         style={{ textDecoration: "none" }}
       >
         <div className="card-img">
