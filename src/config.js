@@ -1,1 +1,1 @@
-export const staticServerUri = "ka6cdbd7cc369a";
+export const staticServerUri = "/k14bb2aa120eba";
