@@ -22,7 +22,7 @@ import NotFound from './routes/NotFound'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const staticServerUri = "";
+const staticServerUri = "/:path";
 
 function App() {
 
