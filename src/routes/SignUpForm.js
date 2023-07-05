@@ -11,7 +11,7 @@ import Button from "react-bootstrap/Button";
 import "../styles/form.css";
 
 import { instance } from "../api";
-const staticServerUri = process.env.REACT_APP_PATH;
+const staticServerUri = process.env.REACT_APP_PATH || "";
 
 function SignUpForm({ onSubmit, onClick }) {
   const navigate = useNavigate();

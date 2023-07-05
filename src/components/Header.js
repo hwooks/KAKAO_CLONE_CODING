@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 import "../styles/Header.css";
 
-const staticServerUri = process.env.REACT_APP_PATH;
+const staticServerUri = process.env.REACT_APP_PATH || "";
 
 function Header() {
   const [isLogin, setIsLogin] = useState(false);

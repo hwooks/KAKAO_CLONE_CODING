@@ -8,7 +8,7 @@ import "../styles/cart.css";
 
 // data
 import { getCartList } from "../api";
-const staticServerUri = process.env.REACT_APP_PATH;
+const staticServerUri = process.env.REACT_APP_PATH || "";
 
 function Cart() {
   const navigate = useNavigate();

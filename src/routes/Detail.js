@@ -19,7 +19,7 @@ import "../styles/Detail.css";
 import { instance } from "../api";
 import { CartDto, ProductDto } from "../dto";
 
-const staticServerUri = process.env.REACT_APP_PATH;
+const staticServerUri = process.env.REACT_APP_PATH || "";
 
 function Detail() {
   const { productId } = useParams();

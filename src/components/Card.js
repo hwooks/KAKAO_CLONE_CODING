@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Badge from "react-bootstrap/Badge";
 
-const staticServerUri = process.env.REACT_APP_PATH;
+const staticServerUri = process.env.REACT_APP_PATH || "";
 
 function Card(props) {
   return (

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import Carousel from "react-bootstrap/Carousel";
 import ProductMain from "./ProductMain";
-const staticServerUri = process.env.REACT_APP_PATH;
+const staticServerUri = process.env.REACT_APP_PATH || "";
 
 function Main() {
   return (

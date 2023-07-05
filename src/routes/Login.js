@@ -12,7 +12,7 @@ import "../styles/form.css";
 import { instance } from "../api";
 import { LoginDto, ResDto } from "../dto";
 
-const staticServerUri = process.env.REACT_APP_PATH;
+const staticServerUri = process.env.REACT_APP_PATH || "";
 
 function Login({ onSubmit }) {
   const navigate = useNavigate();
