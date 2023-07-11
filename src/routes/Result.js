@@ -5,6 +5,8 @@ import "../styles/result.css";
 
 import { getOrderList } from "../api";
 
+const staticServerUri = process.env.REACT_APP_PATH || "";
+
 function Result() {
   let [orderItems, setOrderItems] = useState();
   const [totalPrice, setTotalPrice] = useState(0);
@@ -25,7 +27,7 @@ function Result() {
   const navigate = useNavigate();
 
   const handleOnClick = () => {
-    navigate("/");
+    navigate(staticServerUri + "/");
   };
 
   return (

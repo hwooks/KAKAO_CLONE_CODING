@@ -9,6 +9,8 @@ import "../styles/cartList.css";
 
 import { instance } from "../api";
 
+const staticServerUri = process.env.REACT_APP_PATH || "";
+
 function CartList({ items, getCartItems }) {
   const navigate = useNavigate();
   const [cartItems, setCartItems] = useState(items);
@@ -16,7 +18,7 @@ function CartList({ items, getCartItems }) {
   useEffect(() => {
     if (cartItems.length === 0) {
       alert("장바구니에 담긴 상품이 없습니다.");
-      navigate("./");
+      navigate(staticServerUri + "/");
     }
     console.log(cartItems);
   }, [cartItems.length, navigate]);
@@ -33,7 +35,7 @@ function CartList({ items, getCartItems }) {
       console.log(response.data);
     });
 
-    navigate("./order");
+    navigate(staticServerUri + "/order");
   };
 
   /* Counter 에 있던 함수 */

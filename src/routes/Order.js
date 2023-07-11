@@ -13,6 +13,8 @@ import Button from "react-bootstrap/Button";
 
 import { instance, getCartList } from "../api";
 
+const staticServerUri = process.env.REACT_APP_PATH || "";
+
 function Order({ route }) {
   const [orderItems, setOrderItems] = useState([]);
   const [memberInfo] = useState(members);
@@ -51,7 +53,7 @@ function Order({ route }) {
   const handleOnClick = async () => {
     if (agree) {
       await instance.post("/orders/save").then((res) => {
-        navigate(`/result/${res.data.response.id}`);
+        navigate(`${staticServerUri}/result/${res.data.response.id}`);
       });
     } else {
       alert("결제 조건 전체 동의가 필요합니다.");
