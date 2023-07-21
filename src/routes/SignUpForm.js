@@ -91,7 +91,7 @@ function SignUpForm({ onSubmit, onClick }) {
         <Link to={staticServerUri + "/"}>
           <img
             className="logoText"
-            src={staticServerUri + "logoKakaoText.png"}
+            src={staticServerUri + "/logoKakaoText.png"}
             alt="logoKakaoText.png"
             width={120}
           />
