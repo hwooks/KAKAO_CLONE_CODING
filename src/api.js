@@ -29,7 +29,7 @@ instance.interceptors.response.use(
     switch (error.response.status) {
       case 401:
         alert("로그인이 필요합니다.");
-        window.location.href = "/login";
+        window.location.href = staticServerUri + "/login";
         break;
       case 400:
         return Promise.resolve(error.response);
