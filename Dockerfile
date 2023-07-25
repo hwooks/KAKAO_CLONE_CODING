@@ -3,7 +3,6 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm ci
 COPY . .
-RUN npm run build
 
 RUN apt-get update && \
     apt-get install -y nginx && \
@@ -13,4 +12,4 @@ COPY default.conf /etc/nginx/conf.d/
 
 RUN npm install -g serve
 
-CMD service nginx start && serve -s build
+CMD npm run build && service nginx start && serve -s build
