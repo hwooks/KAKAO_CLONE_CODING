@@ -1,0 +1,61 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+spec:
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: idock.daumkakao.io/techcampus/frontend
+          env:
+            - name: TZ
+              value: Asia/Seoul
+          volumeMounts:
+            - mountPath: /etc/nginx/conf.d/default.conf
+              name: frontend
+              subPath: nginx.conf
+          resources:
+            requests:
+              memory: 1Gi
+          readinessProbe:
+            httpGet:
+              path: /robots.txt
+              port: 80
+      volumes:
+        - name: frontend
+          configMap:
+            name: frontend
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  selector:
+    app: frontend
+  ports:
+    - port: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: frontend
+spec:
+  rules:
+    - host: techcampus.devel.kakao.com
+      http:
+        paths:
+          - backend:
+              serviceName: frontend
+              servicePort: 80
+            path: /
