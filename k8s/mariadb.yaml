@@ -63,6 +63,10 @@ kind: Service
 metadata:
     name: mariadb
     namespace: default
+    annotations:
+        kargo.9rum.cc/phase: dev
+    labels:
+        app.kubernetes.io/managed-by: kargocd
 spec:
     type: ClusterIP
     clusterIP: None
