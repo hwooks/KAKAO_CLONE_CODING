@@ -2,60 +2,77 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
-  labels:
-    app: frontend
-spec:
-  selector:
-    matchLabels:
-      app: frontend
-  template:
-    metadata:
-      labels:
+    annotations:
+        kargo.9rum.cc/phase: dev
+    labels:
         app: frontend
-    spec:
-      containers:
-        - name: frontend
-          image: idock.daumkakao.io/techcampus/frontend
-          env:
-            - name: TZ
-              value: Asia/Seoul
-          volumeMounts:
-            - mountPath: /etc/nginx/conf.d/default.conf
-              name: frontend
-              subPath: nginx.conf
-          resources:
-            requests:
-              memory: 1Gi
-          readinessProbe:
-            httpGet:
-              path: /robots.txt
-              port: 80
-      volumes:
-        - name: frontend
-          configMap:
-            name: frontend
+        app.kubernetes.io/managed-by: kargocd
+    name: frontend
+    namespace: default
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: frontend
+    strategy:
+        rollingUpdate:
+            maxSurge: 25%
+            maxUnavailable: 1
+        type: RollingUpdate
+    template:
+        metadata:
+            labels:
+                app: frontend
+        spec:
+            containers:
+                - name: frontend
+                  image: krmp-d2hub-idock.9rum.cc/goorm/techcamp-frontend
+                  imagePullPolicy: Always
+                  ports:
+                      - containerPort: 80
+                  volumeMounts:
+                      - name: config-volume
+                        mountPath: /usr/src/app/.env
+                        subPath: .env
+            volumes:
+                - name: config-volume
+                  configMap:
+                      name: url-config
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend
+    annotations:
+        kargo.9rum.cc/phase: dev
+    labels:
+        app.kubernetes.io/managed-by: kargocd
+    name: frontend-service
+    namespace: default
 spec:
-  selector:
-    app: frontend
-  ports:
-    - port: 80
+    ports:
+        - name: http
+          port: 80
+          targetPort: 80
+    selector:
+        app: frontend
+    type: LoadBalancer
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: frontend
+    annotations:
+        kargo.9rum.cc/phase: dev
+        nginx.ingress.kubernetes.io/rewrite-target: /$2
+        nginx.ingress.kubernetes.io/ssl-redirect: 'false'
+    labels:
+        app.kubernetes.io/managed-by: kargocd
+    name: frontend
+    namespace: default
 spec:
-  rules:
-    - host: techcampus.devel.kakao.com
-      http:
-        paths:
-          - backend:
-              serviceName: frontend
-              servicePort: 80
-            path: /
+    rules:
+        - http:
+              paths:
+                  - backend:
+                        serviceName: frontend-service
+                        servicePort: 80
+                    path: /k2f4ae2147fcca(/|$)(.*)
