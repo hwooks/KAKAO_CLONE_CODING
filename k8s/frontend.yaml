@@ -75,4 +75,4 @@ spec:
                   - backend:
                         serviceName: frontend-service
                         servicePort: 80
-                    path: /k2f4ae2147fcca(/|$)(.*)
+                    path: /kfed0910e2e37a(/|$)(.*)
