@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: idock.daumkakao.io/techcampus/backend
+          image: krmp-d2hub-idock.9rum.cc/goorm/techcamp-backend
           env:
             - name: TZ
               value: Asia/Seoul
