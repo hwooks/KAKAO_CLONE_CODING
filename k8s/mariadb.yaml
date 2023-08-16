@@ -65,7 +65,7 @@ metadata:
     namespace: default
 spec:
     type: ClusterIP
-    clusterIP: 10.231.11.152
+    clusterIP: None
     selector:
         app: mariadb
     ports:
