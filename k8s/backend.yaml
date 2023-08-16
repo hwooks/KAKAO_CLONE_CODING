@@ -33,9 +33,17 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend
+    annotations:
+        kargo.9rum.cc/phase: dev
+    labels:
+        app.kubernetes.io/managed-by: kargocd
+    name: backend-service
+    namespace: default
 spec:
-  selector:
-    app: backend
-  ports:
-    - port: 8080
+    ports:
+        - name: http
+          port: 8080
+          targetPort: 8080
+    selector:
+        app: backend
+    type: LoadBalancer
