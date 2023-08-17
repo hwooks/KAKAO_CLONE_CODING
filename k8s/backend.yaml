@@ -2,40 +2,52 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
-  labels:
-    app: backend
-spec:
-  selector:
-    matchLabels:
-      app: backend
-  template:
-    metadata:
-      labels:
+    annotations:
+        kargo.9rum.cc/phase: dev
+    labels:
         app: backend
-    spec:
-      containers:
-        - name: backend
-          image: idock.daumkakao.io/techcampus/backend
-          env:
-            - name: TZ
-              value: Asia/Seoul
-            - name: SPRING_DATASOURCE_URL
-              value: jdbc:mariadb://mariadb:3306/kakao
-          resources:
-            requests:
-              memory: 1Gi
-          readinessProbe:
-            httpGet:
-              path: /actuator/health/readiness
-              port: 8080
+        app.kubernetes.io/managed-by: kargocd
+    name: backend
+    namespace: default
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: backend
+    strategy:
+        rollingUpdate:
+            maxSurge: 25%
+            maxUnavailable: 1
+        type: RollingUpdate
+    template:
+        metadata:
+            labels:
+                app: backend
+        spec:
+            containers:
+                - name: backend
+                  image: krmp-d2hub-idock.9rum.cc/goorm/techcamp-backend
+                  imagePullPolicy: Always
+                  ports:
+                      - containerPort: 8080
+                  env:
+                      - name: DATABASE_URL
+                        value: 'jdbc:mariadb://mariadb/kakao'
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend
+    annotations:
+        kargo.9rum.cc/phase: dev
+    labels:
+        app.kubernetes.io/managed-by: kargocd
+    name: backend-service
+    namespace: default
 spec:
-  selector:
-    app: backend
-  ports:
-    - port: 8080
+    ports:
+        - name: http
+          port: 8080
+          targetPort: 8080
+    selector:
+        app: backend
+    type: LoadBalancer
