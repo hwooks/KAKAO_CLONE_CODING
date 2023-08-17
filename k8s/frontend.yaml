@@ -4,8 +4,8 @@ metadata:
     name: url-config
 data:
     .env: |
-        PUBLIC_URL=/kfc335381907aa
-        REACT_APP_PATH=/kfc335381907aa
+        PUBLIC_URL=/k365339e4c138a
+        REACT_APP_PATH=/k365339e4c138a
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -34,7 +34,7 @@ spec:
         spec:
             containers:
                 - name: frontend
-                  image: krmp-d2hub-idock.9rum.cc/dev-test/repo_0a55e788d61
+                  image: krmp-d2hub-idock.9rum.cc/dev-test/repo_95b1247bf3f1
                   imagePullPolicy: Always
                   ports:
                       - containerPort: 80
@@ -83,4 +83,4 @@ spec:
                   - backend:
                         serviceName: frontend-service
                         servicePort: 80
-                    path: /kfc335381907aa(/|$)(.*)
+                    path: /k365339e4c138a(/|$)(.*)
