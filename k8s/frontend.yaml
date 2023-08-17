@@ -4,8 +4,8 @@ metadata:
     name: url-config
 data:
     .env: |
-        PUBLIC_URL=/kfed0910e2e37a
-        REACT_APP_PATH=/kfed0910e2e37a
+        PUBLIC_URL=/k38bf4d9544bda
+        REACT_APP_PATH=/k38bf4d9544bda
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -34,7 +34,7 @@ spec:
         spec:
             containers:
                 - name: frontend
-                  image: krmp-d2hub-idock.9rum.cc/goorm/techcamp-frontend
+                  image: krmp-d2hub-idock.9rum.cc/dev-test/repo_d1a9316269de
                   imagePullPolicy: Always
                   ports:
                       - containerPort: 80
@@ -83,4 +83,4 @@ spec:
                   - backend:
                         serviceName: frontend-service
                         servicePort: 80
-                    path: /kfed0910e2e37a(/|$)(.*)
+                    path: /k38bf4d9544bda(/|$)(.*)
